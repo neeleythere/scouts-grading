@@ -15,9 +15,9 @@ Learn more: https://developers.google.com/apps-script
 * Calculate and award points
 * Display results in an easy to read format
 
-<img src="images/flowchart.png"
-align="middle"
-height="800px"/>
+<p align="center">
+  <img src="images/flowchart.png" align="middle" height="1000px"/>
+</p>
 
 
 ## Google APIs
