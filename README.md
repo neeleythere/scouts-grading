@@ -15,6 +15,8 @@ Learn more: https://developers.google.com/apps-script
 * Calculate and award points
 * Display results in an easy to read format
 
+### Flowchart
+
 <p align="center">
   <img src="images/flowchart.png" align="middle" height="1000px"/>
 </p>
