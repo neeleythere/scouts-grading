@@ -8,6 +8,16 @@ Written in Google Apps Script, a JavaScript platform in the cloud.
 
 Learn more: https://developers.google.com/apps-script
 
+### Functionality
+
+* Collect attendance data
+* Assess uniform & other gradeable factors
+* Calculate and award points
+* Display results in an easy to read format
+
+
+
+
 ## Google APIs
 
 <img
