@@ -17,7 +17,7 @@ Learn more: https://developers.google.com/apps-script
 
 ### Workflow
 
-<p align="center">
+<p align="left">
   <img src="images/flowchart.png" align="middle" height="800px"/>
 </p>
 
