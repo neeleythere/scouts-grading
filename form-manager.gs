@@ -1,4 +1,25 @@
+// PREREQUISITE TO FUNCTIONALITY
+
 var scriptProperties = PropertiesService.getScriptProperties();
+
+/**
+ * Establishes the link between master form and the script.
+ */
+function triggerSetUp() {
+  if (!(scriptProperties.getProperty("writeSheetId"))) {
+    throw new Error("writeSheetId is not defined in script properties.");
+  }
+  var formId = scriptProperties.getProperty("masterFormId");
+  if (formId) {
+    ScriptApp.newTrigger("onFormSubmit")
+        .forForm(formId)
+        .onFormSubmit()
+        .create();
+  } else {
+    throw new Error("masterFormId is not defined in script properties.");
+  }
+}
+
 
 /**
  * Patrol within the scout group, typically comprised of members.
@@ -76,22 +97,6 @@ function createFormTrigger(form) {
       .forForm(form)
       .onFormSubmit()
       .create(); 
-}
-
-/**
- * Establishes the link between the master form and the script.
- *
- */
-function triggerSetUp() {
-  var formId = scriptProperties.getProperty("masterFormId");  
-  if (formId) {
-    ScriptApp.newTrigger("onFormSubmit")
-        .forForm(formId)
-        .onFormSubmit()
-        .create();
-  } else {
-    throw new Error("id of masterForm is not defined in script properties.");
-  }
 }
 
 /**
