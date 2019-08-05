@@ -10,6 +10,15 @@ Learn more: https://developers.google.com/apps-script
 
 ![forms](images/form-demo.gif)
 
+<div class="row">
+  <div class="column">
+    <img src="images/sheets-data.gif" alt="Snow" style="width:50%">
+  </div>
+  <div class="column">
+    <img src="images/form-creation.gif" alt="Forest" style="width:50%">
+  </div>
+</div>
+
 ### Functionality
 
 * Collect attendance data
