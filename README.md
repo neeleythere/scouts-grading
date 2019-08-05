@@ -8,6 +8,8 @@ Written in Google Apps Script, a JavaScript platform in the cloud.
 
 Learn more: https://developers.google.com/apps-script
 
+[forms](images/form-demo.gif)
+
 ### Functionality
 
 * Collect attendance data
