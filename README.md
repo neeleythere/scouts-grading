@@ -10,8 +10,8 @@ Learn more: https://developers.google.com/apps-script
 
 ![forms](images/form-demo.gif)
 
-<p float="middle">
-  <img src="images/sheets-data.gif" width="49%" />
+<p>
+  <img src="images/sheets-data.gif" width="49%" float="left" />
   <img src="images/form-creation.gif" width="49%" float="right" /> 
 </p>
 
