@@ -12,10 +12,10 @@ Learn more: https://developers.google.com/apps-script
 
 <div class="row">
   <div class="column">
-    <img src="images/sheets-data.gif" alt="sheets-data" width="48%">
+    <img src="images/sheets-data.gif" alt="sheets-data" style="float: left; width: 30%">
   </div>
   <div class="column">
-    <img src="images/form-creation.gif" alt="form-creation" width="48%">
+    <img src="images/form-creation.gif" alt="form-creation" style="float: left; width: 30%">
   </div>
 </div>
 
