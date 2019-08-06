@@ -10,20 +10,9 @@ Learn more: https://developers.google.com/apps-script
 
 ![forms](images/form-demo.gif)
 
-<div class="row">
-  <div class="column">
-    <img src="images/sheets-data.gif" alt="sheets-data" width="46%">
-  </div>
-  <div class="column">
-    <img src="images/form-creation.gif" alt="form-creation" width="46%">
-  </div>
-</div>
-
-![alt-text-1](images/sheets-data.gif) ![alt-text-2](images/form-creation.gif)
-
-<p float="left">
-  <img src="images/sheets-data.gif" width="46%" />
-  <img src="images/form-creation.gif" width="46%" /> 
+<p float="middle">
+  <img src="images/sheets-data.gif" width="49%" />
+  <img src="images/form-creation.gif" width="49%" /> 
 </p>
 
 ### Functionality
