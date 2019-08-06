@@ -19,6 +19,10 @@ Learn more: https://developers.google.com/apps-script
   </div>
 </div>
 
+![alt-text-1](images/sheets-data.gif) ![alt-text-2](images/form-creation.gif)
+
+
+
 ### Functionality
 
 * Collect attendance data
