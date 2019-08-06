@@ -12,7 +12,7 @@ Learn more: https://developers.google.com/apps-script
 
 <p float="middle">
   <img src="images/sheets-data.gif" width="49%" />
-  <img src="images/form-creation.gif" width="49%" /> 
+  <img src="images/form-creation.gif" width="49%" float="right" /> 
 </p>
 
 ### Functionality
