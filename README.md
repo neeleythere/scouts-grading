@@ -57,11 +57,6 @@ width="96px"/>
 - [Access Google APIs via Advanced Google services](advanced/)
 <br><br>
 
-<img
-src="https://www.gstatic.com/images/branding/product/2x/calendar_96dp.png"
-align="left"
-width="96px"/>
-
 
 ## Clone using the `clasp` command line tool
 
