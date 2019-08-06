@@ -8,12 +8,6 @@ Written in Google Apps Script, a JavaScript platform in the cloud.
 
 Learn more: https://developers.google.com/apps-script
 
-![forms](images/form-demo.gif)
-
-<p>
-  <img src="images/sheets-data.gif" width="49%" float="left" />
-  <img src="images/form-creation.gif" width="49%" float="right" /> 
-</p>
 
 ### Functionality
 
@@ -27,6 +21,16 @@ Learn more: https://developers.google.com/apps-script
 <p align="left">
   <img src="images/flowchart.png" align="middle" height="800px"/>
 </p>
+
+## Demo
+
+![forms](images/form-demo.gif)
+
+<p>
+  <img src="images/sheets-data.gif" width="49%" float="left" />
+  <img src="images/form-creation.gif" width="49%" float="right" /> 
+</p>
+
 
 
 ## Google APIs
