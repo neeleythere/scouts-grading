@@ -22,8 +22,8 @@ Learn more: https://developers.google.com/apps-script
 ![alt-text-1](images/sheets-data.gif) ![alt-text-2](images/form-creation.gif)
 
 <p float="left">
-  <img src="images/sheets-data.gif" width="40%" />
-  <img src="images/form-creation.gif" width="40%" /> 
+  <img src="images/sheets-data.gif" width="46%" />
+  <img src="images/form-creation.gif" width="46%" /> 
 </p>
 
 ### Functionality
