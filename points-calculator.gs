@@ -1,17 +1,3 @@
-function createFormTrigger() {
-  //var form = FormApp.openById("1lnw0fc4JTdSm5qx6mkl3b85DGYiXUomlbJV_ATl2TDE"); SWIFTS
-  //var form = FormApp.openById("1QNptNA3TyKxFXj1cXDs2BzJLnypSBzhOjzgnrtILlAE"); FALCONS
-  //var form = FormApp.openById("1SU3A2Z3_wJvJSqYCr9MpuIgVBOm9gwQg3Ai8inYtFwM"); HAWKS
-  var form = FormApp.openById("1L0wIDdxMjL7Hrh9hYEhi7v8zp43AkeesSxQ4Ntq-EKM"); //EAGLES
-
-
-  ScriptApp.newTrigger("onGradingFormSubmit")
-      .forForm(form)
-      .onFormSubmit()
-      .create();
-  
-}
-
 function onGradingFormSubmit(e) {
   
   var nameArray;
@@ -23,14 +9,13 @@ function onGradingFormSubmit(e) {
   // File name takes the form "swifts-patrol" for example
   var patrolName = formFileName.split(/-/)[0];
   var patrolRow;
-  
-  console.log(patrolName);
-  
+    
   var responses = e.response.getItemResponses();
   var formItems = form.getItems();
   
   // Spreadsheet where all data is stored
-  var logsSpread = SpreadsheetApp.openById("1_f4DeuWWqAvz_z8L-jDk2kPsvqoqEBEylIODvG4abuI");
+  var logsSpread = SpreadsheetApp.openById(scriptProperties.getProperty("writeSheetId"));
+
   
   var attendanceSheet = logsSpread.getSheetByName("Attendance ACTIVE");
   var registerLength = attendanceSheet.getDataRange().getNumRows() - 1;
@@ -49,27 +34,22 @@ function onGradingFormSubmit(e) {
   // The response does not include all items
   for (var i = 0; i < formItems.length; i++) {
     var item = formItems[i];
-    // Identify the item which conveniently holds each patrol member's name
+    // Identify the item which conveniently holds each patrol member's name.
     if (item.getTitle() == "Additional points") {
       // Validation, so we can be certain to treat it as a checkbox grid item.
       if (item.getType() == "CHECKBOX_GRID") {
         item = item.asCheckboxGridItem();
         // Returns everyone in patrol
         nameArray = item.getRows();
-        
-        
-        // nameArray[i] = nameArray[i][{uniformGraded: false}];
       }
     }
   }
-  
   
   for (var i = 0; i < pointsNameRegister.length; i++) {
     if (pointsNameRegister[i][0].toLowerCase() == patrolName) {
       patrolRow = i;
     }
   }
-  
   
   // We will use an object to store patrol members, as we can access
   // their information by name rather than iterating through an array
@@ -103,7 +83,6 @@ function onGradingFormSubmit(e) {
         patrolMembers[name].pointsPosition = j;
       }
     }
-
   }
   
   var additionalAccumulative = 0;
@@ -120,11 +99,14 @@ function onGradingFormSubmit(e) {
       // less than or equal to 2 uncapitalised words (van der Bosch) 
       var upperCaseWords = title.match(/([A-Z])\w+/g);
       var lowerCaseWords = title.match(/\b[a-z]+\b/g);
+      // Form questions which contain uniform data are titled with the member's name.
       if (upperCaseWords && upperCaseWords.length >= 2 && (!lowerCaseWords ? true : lowerCaseWords.length <= 2)) {
        
         var member = patrolMembers[title];
-                
+        
+        // Returns an array.
         var uniform = response.getResponse();
+        // Length of list indicates how many uniform items there are to grade.
         var uniformItems = uniform.length;
         
         var uniformPercent = 1;
@@ -138,7 +120,8 @@ function onGradingFormSubmit(e) {
             }
           }
         }
-                
+        
+        // Avoid writing to the spreadsheet in decimal points.
         if (uniformPercent * 100 < 1) {
           uniformPercent = 0;
         } else {
@@ -149,9 +132,7 @@ function onGradingFormSubmit(e) {
                 
         member.uniform = uniformPercent;
         member.uniformGraded = true;
-        
-        console.log(member);
-        
+                
       } else if (title == "Additional points") {
         
         var responseArray = response.getResponse();
@@ -174,25 +155,25 @@ function onGradingFormSubmit(e) {
           }
         }
       }
-    } else if (title == "How would you rate the troop's conduct prior to and during inspection/flag break?") {
-     
-      additionalAccumulative += ((+response.getResponse() - 1) / 4) * 30;
       
+    } else if (title == "How would you rate the troop's conduct prior to and during inspection/flag break?") {
+      additionalAccumulative += ((+response.getResponse() - 1) / 4) * 30;
     }
-    
-    
-    
   }
   
   for (var key in patrolMembers) {
     if (patrolMembers.hasOwnProperty(key)) {
+      // Check if member is present.
       if (attendance[patrolMembers[key].position] == "true") {
         patrolMembers[key].present = 1;
         attendanceAccumulative += 1;
+      // Absence also means the member is unable to accumulate points for uniform.
       } else {
         patrolMembers[key].present = 0;
         patrolMembers[key].uniform = 0;
       }
+      // If we didn't have to process any issues with uniform, we can deduce that
+      // the member's uniform was perfect.
       if (patrolMembers[key].uniformGraded == false && patrolMembers[key].present == 1) {
         patrolMembers[key].uniform = 1;
         uniformAccumulative += 1;
@@ -200,15 +181,9 @@ function onGradingFormSubmit(e) {
     }
   }
   
-  console.log("Attendance: " + (attendanceAccumulative / nameArray.length) * 50 + " points");
-  console.log("Uniform: " + (uniformAccumulative / attendanceAccumulative) * 100 + " points");
-  
-  Logger.log(attendanceAccumulative);
-  Logger.log(uniformAccumulative);
-  
   var attendanceTotal = (attendanceAccumulative / nameArray.length) * 50;
+  // sum of uniform grade / present * 100
   var uniformTotal = (uniformAccumulative / attendanceAccumulative) * 100;
-  
     
   var pointsWriteColumn = pointsActiveRange.getLastColumn();
   
@@ -217,15 +192,11 @@ function onGradingFormSubmit(e) {
   
   var now = new Date();
   
-  // WONT WORK BC LAST VALUE WON'T BE DATE
-  // SCRIPT PROP OF ROW AND TIME :)))
-  //console.log(now);
-  //console.log(now.getTime() - lastExecution);
-  
-  if (pointsWriteColumn < 3 || (now.getTime() - lastExecution) > 2 * 1000 * 60 * 60) {
+  if (pointsWriteColumn < 3 || (now.getTime() - lastExecution) > 2 * 1000 * 60 * 60 || lastExecution == null) {
     
     pointsWriteColumn += 1;
     
+    // Formatting and grouping for spreadsheet readability.
     var writeRange = pointsSheet.getRange(1, pointsWriteColumn, 1, 5);
     writeRange.setValues([[new Date(), "Attendance", "Uniform", "Additional", "Meeting"]]);
     writeRange.setFontWeights([["bold", "normal", "normal", "normal", "normal"]]);
@@ -239,11 +210,13 @@ function onGradingFormSubmit(e) {
   }
   
   pointsWriteColumn = +scriptProperties.getProperty("lastDateRow");
-
+  
+  // Write the resultant points to the spreadsheet.
   var writeRange = pointsSheet.getRange(patrolRow + 2, pointsWriteColumn, 1, 4);
   writeRange.setValues([["", attendanceTotal, uniformTotal, additionalAccumulative]]);
   writeRange.setNumberFormat("0");
   
+  // Calculate the total points for the member.
   writeRange = writeRange.getCell(1, 1);
   writeRange.setFormulaR1C1("=SUM(R[0]C[1]:R[0]C[4])");
   
@@ -252,7 +225,8 @@ function onGradingFormSubmit(e) {
       
       var member = patrolMembers[key]
       
-      
+      // Create spreadsheet functions to calculate patrol totals, to allow for points to be altered
+      // post script processing—instead of the code applying the final arithmatic, we'll get the spreadsheet to handle this.
       var writeRange = pointsSheet.getRange(member.pointsPosition + 2, pointsWriteColumn, 1, 4);
       writeRange.setFormulasR1C1([[
         "=SUM(R[0]C[1]:R[0]C[4])",
@@ -264,33 +238,3 @@ function onGradingFormSubmit(e) {
     }
   }
 }
-  
-
-function foo() {
-    var scriptProperties = PropertiesService.getScriptProperties();
-
-  
- var wayback = new Date();
-  wayback.setFullYear(1970);
-  
-  scriptProperties.setProperty("lastExecution", wayback.getTime());
-  
-  
-  //console.log(rowGroup.getDepth());
-  //console.log(rowGroup.getRange().getValues());
-  
-}
-
-  
-
-  
-  
-  // INITIAL associate each row in spreadsheet to a scout
-  
-  // iterate over each response, identify by title
-  // create object, associate grading item with last response row & spreadsheet row
-  
-  
-  // unique handler for each
-  // associate row 
-  

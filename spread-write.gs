@@ -2,18 +2,14 @@ var scriptProperties = PropertiesService.getScriptProperties();
 
 function logAttendance(patrol) {
   
-  var ss = SpreadsheetApp.openById("1_f4DeuWWqAvz_z8L-jDk2kPsvqoqEBEylIODvG4abuI");
+  var ss = SpreadsheetApp.openById(scriptProperties.getProperty("writeSheetId"));
   var sheet = ss.getSheetByName("Attendance ACTIVE");
   var pointsSheet = ss.getSheetByName("Patrol Points ACTIVE");
-  // Passing only two arguments returns a "range" with a single cell.
-  
-  
-  
+    
   var currentTime = new Date();
   var dateColumn;
   
-  console.log((currentTime.getTime() - scriptProperties.getProperty("lastLogExecute")) / 1000);
-  
+  // Whe
   if ((currentTime.getTime() - scriptProperties.getProperty("lastLogExecute")) > 5 * 1000 * 60) {
     dateColumn = sheet.getRange(1, sheet.getLastColumn() + 1);
     dateColumn.setValue(currentTime);
@@ -22,7 +18,6 @@ function logAttendance(patrol) {
   }
   
   scriptProperties.setProperty("lastLogExecute", currentTime.getTime());
-  
   
   var pointsNames = pointsSheet.getRange(1, 1, pointsSheet.getLastRow(), 2).getValues();
   var names = sheet.getRange(1, 1, sheet.getLastRow(), 2).getValues();
@@ -83,31 +78,6 @@ function logAttendance(patrol) {
     var patrolRange = pointsSheet.getRange(patrol.Row + 1, 1, patrol.Members.length, 1);
     patrolRange.shiftRowGroupDepth(-1);
     patrolRange.shiftRowGroupDepth(1);
-  }
-  
+  } 
     
-}
-
-
-
-
-function foo() {
-  var str;
-  
-  if (str === undefined) {
-    Logger.log("true");
-  } else {
-    Logger.log("false");
-  }
-  
-  var ss = SpreadsheetApp.openById("1_f4DeuWWqAvz_z8L-jDk2kPsvqoqEBEylIODvG4abuI");
-  var sheet = ss.getSheetByName("Attendance ACTIVE");
-  var pointsSheet = ss.getSheetByName("Patrol Points ACTIVE");
-  
-  var writeRange = pointsSheet.getRange("35:40");
-  writeRange.shiftRowGroupDepth(1);
-
-  // pointsSheet.insertRowAfter(16);
-  
-  
 }
