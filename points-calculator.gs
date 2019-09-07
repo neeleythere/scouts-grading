@@ -1,3 +1,5 @@
+var scriptProperties = PropertiesService.getScriptProperties();
+
 function onGradingFormSubmit(e) {
   
   var nameArray;
