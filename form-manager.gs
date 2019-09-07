@@ -8,7 +8,7 @@ var scriptProperties = PropertiesService.getScriptProperties();
  * @param {string} name Name of patrol.
  * @param {array} members Array in which member objects are contained.
  *
- * {array} memberNameArray Names of each member.
+ * @param {array} memberNameArray Names of each member.
  *                        
  */
 function Patrol(name, members) {  
