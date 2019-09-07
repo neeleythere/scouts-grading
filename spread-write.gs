@@ -1,6 +1,6 @@
-var scriptProperties = PropertiesService.getScriptProperties();
-
 function logAttendance(patrol) {
+  
+  var scriptProperties = PropertiesService.getScriptProperties();
   
   var ss = SpreadsheetApp.openById(scriptProperties.getProperty("writeSheetId"));
   var sheet = ss.getSheetByName("Attendance ACTIVE");
@@ -10,7 +10,7 @@ function logAttendance(patrol) {
   var dateColumn;
   
   // Whe
-  if ((currentTime.getTime() - scriptProperties.getProperty("lastLogExecute")) > 5 * 1000 * 60) {
+  if ((currentTime.getTime() - scriptProperties.getProperty("lastLogExecute")) > 5 * 1000 * 60 || sheet.getLastColumn() < 5) {
     dateColumn = sheet.getRange(1, sheet.getLastColumn() + 1);
     dateColumn.setValue(currentTime);
   } else {
@@ -30,10 +30,14 @@ function logAttendance(patrol) {
     }
   }
   
+  // If this patrol name has not yet been registered, a new row needs to be created
   if (patrol.Row == undefined) {
+    // Add to first available row
     patrol.Row = pointsSheet.getLastRow() + 1;
-    var writeRange = pointsSheet.getRange(patrol.Row, 1, 1, 1);
-    writeRange.setValue(patrol.Name);
+    var writeRange = pointsSheet.getRange(patrol.Row, 1, 1, 3);
+    writeRange.setValues([[patrol.Name, "", ""]]);
+    // Create the formula for the addition of the points to determine the total points for the patrol
+    writeRange.getCell(1, 3).setFormulaR1C1("=SUM(R[0]C[1]:R[0])/2").setNumberFormat("0");
     writeRange.setFontWeight("bold");
   }
   

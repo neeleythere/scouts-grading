@@ -1,6 +1,6 @@
-var scriptProperties = PropertiesService.getScriptProperties();
-
 function onGradingFormSubmit(e) {
+  
+  var scriptProperties = PropertiesService.getScriptProperties();
   
   var nameArray;
   var memberArray;
@@ -194,7 +194,7 @@ function onGradingFormSubmit(e) {
   
   var now = new Date();
   
-  if (pointsWriteColumn < 3 || (now.getTime() - lastExecution) > 2 * 1000 * 60 * 60 || lastExecution == null) {
+  if (pointsWriteColumn < 4 || (now.getTime() - lastExecution) > 2 * 1000 * 60 * 60 || lastExecution == null) {
     
     pointsWriteColumn += 1;
     
@@ -212,6 +212,9 @@ function onGradingFormSubmit(e) {
   }
   
   pointsWriteColumn = +scriptProperties.getProperty("lastDateRow");
+  
+  //var writeRange = pointsSheet.getRange(patrolRow, 3);
+  //writeRange.setFormulaR1C1("=SUM(R[0]");
   
   // Write the resultant points to the spreadsheet.
   var writeRange = pointsSheet.getRange(patrolRow + 2, pointsWriteColumn, 1, 4);

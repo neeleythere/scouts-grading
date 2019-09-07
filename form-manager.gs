@@ -9,6 +9,7 @@ var scriptProperties = PropertiesService.getScriptProperties();
  * @param {array} members Array in which member objects are contained.
  *
  * @param {array} memberNameArray Names of each member.
+ * @param {string} formId Id of associated patrol grading form.
  *                        
  */
 function Patrol(name, members) {  
@@ -82,12 +83,11 @@ function createFormTrigger(form) {
 /**
  * Sets the content of the patrol grading form based on data derived from the master form.
  *
- * @param {string} formId Unique identifier for patrol form to load in.
- * @param {Object} patrol Determine members' names, rank, & attendance.
+ * @param {Object} patrol Determine formId and members' names, rank, & attendance.
  */
-function createPatrolForm(formId, patrol) {
+function refreshPatrolForm(patrol) {
   
-  var dynamicForm = FormApp.openById(formId);
+  var dynamicForm = FormApp.openById(patrol.formId);
   
   removeFormItems(dynamicForm);
   
@@ -149,6 +149,44 @@ function createPatrolForm(formId, patrol) {
   
 }
 
+/**
+ * Creates a form associated to a patrol, returns the id of newly created form.
+ *
+ * @param {Object} patrol Determine members' names, rank, & attendance.
+ * @param {Object} source Data re. the master form, passed from the 'e' object
+ *                        see https://developers.google.com/apps-script/understanding_events
+ * @returns {string} Id of created form.
+ *
+ */
+function createPatrolForm(patrol, source) {
+  var newFormId = FormApp.create(patrol.Name.toLowerCase()+"-entry").getId();
+  var newForm = DriveApp.getFileById(newFormId);
+  // Fetch the master form so we can read applicable details
+  var sourceId = source.getId();
+  var folders = DriveApp.getFileById(sourceId).getParents();
+  
+  // Although rare, the same file can sometimes be found in more than one location
+  if (folders.hasNext()) {
+    // Place the new form in the same folder as the master form
+    var folder = folders.next();
+    folder.addFile(newForm);
+    // Now we can remove the file from My Drive
+    DriveApp.removeFile(newForm);
+    // For convenience and to avoid cluttering Drive, restrict the placement of the file to one location
+    // Best to tell someone though.
+    if (folders.hasNext()) {
+      console.warn("Master form present in multiple folders, patrol form placed in first occurence: " + folder.getName() + "with id " + folder.getId());
+    }
+  } else {
+    // If we can't find a location for the master form, the new form will default to My Drive
+    // and since we didn't remove it, you'll still find it there
+    throw new Error("Master form does not have a valid parent: patrol form placed in root My Drive");
+  }
+  
+  return newFormId;
+  
+}
+
 
 /**
  * A trigger-driven function that handles responses from the master form.
@@ -197,40 +235,20 @@ function onFormSubmit(e) {
           }
           
           var patrol = new Patrol(patrolName, patrolMembersObj);
-          var patrolForm = scriptProperties.getProperty(patrolName.toLowerCase() + "FormId");
+          patrol.formId = scriptProperties.getProperty(patrolName.toLowerCase() + "FormId");
           
-          if (patrolForm == null) {
+          if (patrol.formId == null) {
             console.log("Patrol form does not yet exist");
             // Creates a new form, location defaults to My Drive
-            var newFormId = FormApp.create(patrolName.toLowerCase()+"-entry").getId();
-            var newForm = DriveApp.getFileById(newFormId);
-            // Fetch the master form so we can read applicable details
-            var sourceId = e.source.getId();
-            var folders = DriveApp.getFileById(sourceId).getParents();
             
-            // Although rare, the same file can sometimes be found in more than one location
-            if (folders.hasNext()) {
-              // Place the new form in the same folder as the master form
-              var folder = folders.next();
-              folder.addFile(newForm);
-              // Now we can remove the file from My Drive
-              DriveApp.removeFile(newForm);
-              // For convenience and to avoid cluttering Drive, restrict the placement of the file to one location
-              // Best to tell someone though.
-              if (folders.hasNext()) {
-                console.warn("Master form present in multiple folders, patrol form placed in first occurence: " + folder.getName() + "with id " + folder.getId());
-              }
-            } else {
-              // If we can't find a location for the master form, the new form will default to My Drive
-              // and since we didn't remove it, you'll still find it there
-              throw new Error("Master form does not have a valid parent: patrol form placed in root My Drive");
-            }
-            
-            scriptProperties.setProperty(patrolName.toLowerCase() + "FormId", newFormId)
-            patrolForm = newFormId;
+            // Create a patrol form to populate
+            patrol.formId = createPatrolForm(patrol, e.source);
+            // Set property to newly created form for subsequent executions
+            scriptProperties.setProperty(patrolName.toLowerCase() + "FormId", patrol.formId);
           }
           
-          createPatrolForm(patrolForm, patrol);
+          // Refresh the patrol form to reflect attendance data & any member additions/deletions
+          refreshPatrolForm(patrol);
           
           logAttendance(patrol);
         }
