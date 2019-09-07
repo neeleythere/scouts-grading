@@ -37,7 +37,11 @@ These operations execute concurrently upon submission of the master form:
   <img src="images/form-creation.gif" width="49%" float="right" /> 
 </p>
 
-
+Following weeks of usage the linked spreadsheet will populate as follows.
+<p>
+  <img src="images/attendance.png" width="49%" float="left" />
+  <img src="images/patrol-points.png" width="49%" float="right" /> 
+</p>
 
 ## Google APIs
 
