@@ -61,8 +61,8 @@ The subsequent `Multiple choice grid` is interpreted as the patrol itself:
 - Each row defines a patrol member:
   - The patrol member's name is set by the row's name
   - To attach a rank to a patrol member, preface their name with:
-   - `PL`  — Patrol Leader
-   - `APL` — Assistant Patrol Leader
+    - `PL`  — Patrol Leader
+    - `APL` — Assistant Patrol Leader
  - Columns should be set to:
    - `Present`
    - `Absent`
