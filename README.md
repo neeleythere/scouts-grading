@@ -48,18 +48,32 @@ Following weeks of usage the linked spreadsheet will populate as follows.
 Designed to be quick and easy to use. With all additions, edits and removal of members/patrols done via an interface.
 
 #### Creating Patrols
-A patrol is defined by a "title and description", the patrol will be named per the title's ...title. The description can be left blank.
-
-![patrol-title](https://user-images.githubusercontent.com/22595300/64488636-7d1d5d00-d24a-11e9-8a38-aff4cb70830d.png)
+A patrol is defined by a "title and description" item:
+- The Patrol name is set per the title's ...title
+- The description can be left blank
 
 #### Defining Members
-The subsequent "Multiple choice grid" is interpreted as the patrol itself, this is where to set members and their rank.
+The subsequent "Multiple choice grid" is interpreted as the patrol itself:
 
-![patrol-members](https://user-images.githubusercontent.com/22595300/64488916-bd320f00-d24d-11e9-8076-e1160b60ed53.png)
+- Leave the title blank.
+- Each row defines a patrol member:
+  - The patrol member's name is set by the row's name
+  - To attach a rank to a patrol member, preface their name with:
+   - `PL`  — Patrol Leader
+   - `APL` — Assistant Patrol Leader
+ - Columns should be set to:
+   - `Present`
+   - `Absent`
+   - `Notified Absence` (optional)
 
-To attach a rank to a patrol member, preface their name with:
-* `PL`  — Patrol Leader
-* `APL` — Assistant Patrol Leader
+#### Screenshots
+
+
+<p>
+  <img src="https://user-images.githubusercontent.com/22595300/64488636-7d1d5d00-d24a-11e9-8a38-aff4cb70830d.png" width="49%" float="left" />
+  <img src="https://user-images.githubusercontent.com/22595300/64488916-bd320f00-d24d-11e9-8076-e1160b60ed53.png" width="49%" float="right" /> 
+</p>
+
 
 ## Installation
 
