@@ -1,6 +1,6 @@
 # Scout Grading
 
-Designed to minimise the administration that accompanies running a scout troop. This includes attendance logging, automatically generated patrol grading forms & a smart patrol calculater. Displays data in an easy to read format.
+Designed to minimise the administration that accompanies running a scout troop. This includes attendance logging, automatically generated patrol grading forms & a smart patrol point calculater. Displays data in an easy to read format.
 
 Utilises Google [forms](https://forms.google.com) & [sheets](https://sheets.google.com) to allow for simple, UI based modification and customisation.
 
