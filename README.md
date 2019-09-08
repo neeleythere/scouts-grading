@@ -107,26 +107,11 @@ The subsequent `Multiple choice grid` is interpreted as the patrol itself:
 
 The spreadsheet defined by `writeSheetId` will be populated upon the first submission of the form defined by `masterFormId`.
 
-## Google APIs
-
-<img
-src="https://www.gstatic.com/images/branding/product/2x/admin_96dp.png"
-align="left"
-width="96px"/>
-### AdminSDK
-- [Manage domains and apps](adminSDK)
-<br><br>
-
-<img
-src="https://www.gstatic.com/images/branding/product/2x/google_cloud_96dp.png"
-align="left"
-width="96px"/>
-### Advanced Services
-- [Access Google APIs via Advanced Google services](advanced/)
-<br><br>
-
-
 ## Clone using the `clasp` command line tool
 
 Learn how to clone, pull, and push Apps Script projects on the command line
 using [clasp](https://developers.google.com/apps-script/guides/clasp).
+
+## License
+
+The code is available under the [MIT license](LICENSE.txt).
