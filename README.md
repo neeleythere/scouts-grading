@@ -96,13 +96,13 @@ The subsequent `Multiple choice grid` is interpreted as the patrol itself:
     - G Drive is able to "Make a copy" of all files in one operation if all 3 files are selected.
 2. Place the new files in a folder of their own to avoid clutter. (optional)
     - When run, `form-manager.gs` will generate additional forms which are placed in the same folder as the form defined by `masterFormId`. (see below)
-3. Open `Copy of scouts-grading` and navigate to `File > Project properties > Script properties`.
+3. Open `Copy of scouts-grading` and navigate to *File > Project properties > Script properties*.
     - Feel free to rename the file.
-4. Select `+ Add row` twice and define both `writeSheetId` and `masterFormId`.
+4. Select *+ Add row* twice and define both `writeSheetId` and `masterFormId`.
 5. Copy the id from `Copy of Troop Records` and `Copy of Troop Register` and set the value of the properties respectively.
     - The id of a document is the 44 char. hash in the document's URL.
         - id in **bold**: docs&#46;google&#46;com/spreadsheets/d/**1HF3J1_hjian3oiD2nl1YvB6eLxw8kj1wYigKhzROZP8**/edit
-6. Open `setup.gs` from the list on the left and navigate to `Run > Run function > triggerSetUp`
+6. Open `setup.gs` from the list on the left and navigate to *Run > Run function > triggerSetUp*
 7. Verify the app and grant requested permissions.
 
 The spreadsheet defined by `writeSheetId` will be populated upon the first submission of the form defined by `masterFormId`.
