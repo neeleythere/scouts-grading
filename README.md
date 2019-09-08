@@ -43,6 +43,14 @@ Following weeks of usage the linked spreadsheet will populate as follows.
   <img src="images/patrol-points.png" width="49%" float="right" /> 
 </p>
 
+## Installation
+
+1. Make a copy of each the files within the [scouts-grading](https://drive.google.com/open?id=1MN9GEt42tenHOS_lwxHhdEU6lPMXRF7d) G Drive directory.
+    - G Drive is able to "Make a copy" of all files in one operation
+2. Place the new files in a folder of their own to avoid clutter. (optional)
+    - When run, `form-manager.gs` will generate additional forms which are placed in the same folder as the form defined by `masterFormId`. (see below)
+3.
+
 ## Google APIs
 
 <img
