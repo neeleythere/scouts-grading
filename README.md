@@ -69,11 +69,20 @@ The subsequent "Multiple choice grid" is interpreted as the patrol itself:
 #### Screenshots
 
 
-<p>
-  <img src="https://user-images.githubusercontent.com/22595300/64488636-7d1d5d00-d24a-11e9-8a38-aff4cb70830d.png" width="49%" float="left" />
-  <img src="https://user-images.githubusercontent.com/22595300/64488916-bd320f00-d24d-11e9-8076-e1160b60ed53.png" width="49%" float="right" /> 
-</p>
-
+<table width="100%">
+  <tr>
+    <td> <img src="https://user-images.githubusercontent.com/22595300/64489646-de96f900-d255-11e9-9051-9de47687c1ab.png" /> </td>
+    <td> <img src="https://user-images.githubusercontent.com/22595300/64489654-efe00580-d255-11e9-8c80-09a1ef275407.png" /> </td>
+  </tr>
+   <tr>
+    <td> <i>sup</i> </td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td> <img src="https://user-images.githubusercontent.com/22595300/64489662-071ef300-d256-11e9-986c-057c069dc329.png" /> </td>
+    <td> <img src="https://user-images.githubusercontent.com/22595300/64489666-1a31c300-d256-11e9-92ce-6809ed1bfd6b.png" /> </td>
+  </tr>
+</table>
 
 ## Installation
 
