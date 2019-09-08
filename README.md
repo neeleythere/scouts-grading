@@ -48,12 +48,14 @@ Following weeks of usage the linked spreadsheet will populate as follows.
 Designed to be quick and easy to use. With all additions, edits and removal of members/patrols done via an interface.
 
 #### Creating Patrols
-A patrol is defined by a "title and description" item:
-- The Patrol name is set per the title's ...title
-- The description can be left blank
+A patrol is defined by a `Title and description` item:
+- The Patrol name is set per the headers's title.
+- The description can be left blank.
+- Create more patrols by adding additional `Title and description` items:
+  - Ensure each `Title and description` is followed by a `Multiple choice grid`.
 
 #### Defining Members
-The subsequent "Multiple choice grid" is interpreted as the patrol itself:
+The subsequent `Multiple choice grid` is interpreted as the patrol itself:
 
 - Leave the title blank.
 - Each row defines a patrol member:
@@ -75,12 +77,16 @@ The subsequent "Multiple choice grid" is interpreted as the patrol itself:
     <td> <img src="https://user-images.githubusercontent.com/22595300/64489654-efe00580-d255-11e9-8c80-09a1ef275407.png" /> </td>
   </tr>
    <tr>
-    <td> <i>sup</i> </td>
-    <td> </td>
+    <td> <i>Select "Add title and description" and choose a name</i> </td>
+    <td> <i>The subsequent item should be a "Multiple choice grid"</i> </td>
   </tr>
   <tr>
     <td> <img src="https://user-images.githubusercontent.com/22595300/64489662-071ef300-d256-11e9-986c-057c069dc329.png" /> </td>
     <td> <img src="https://user-images.githubusercontent.com/22595300/64489666-1a31c300-d256-11e9-92ce-6809ed1bfd6b.png" /> </td>
+  </tr>
+  <tr>
+    <td> <i>Ensure "Present" & "Absent" are included as columns</i> </td>
+    <td> <i>The form should appear like this</i> </td>
   </tr>
 </table>
 
