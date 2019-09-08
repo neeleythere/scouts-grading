@@ -114,4 +114,4 @@ using [clasp](https://developers.google.com/apps-script/guides/clasp).
 
 ## License
 
-The code is available under the [MIT license](LICENSE.txt).
+The code is available under the [MIT license](LICENSE.md).
