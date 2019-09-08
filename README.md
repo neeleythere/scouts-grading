@@ -55,6 +55,10 @@ Following weeks of usage the linked spreadsheet will populate as follows.
 5. Copy the id from `Copy of Troop Records` and `Copy of Troop Register` and set the value of the properties respectively.
     - The id of a document is the 44 char. hash in the document's URL.
         - id in **bold**: docs&#46;google&#46;com/spreadsheets/d/**1HF3J1_hjian3oiD2nl1YvB6eLxw8kj1wYigKhzROZP8**/edit
+6. Open `setup.gs` from the list on the left and navigate to `Run > Run function > triggerSetUp`
+7. Verify the app and grant requested permissions.
+
+The spreadsheet defined by `writeSheetId` will be populated upon the first submission of the form defined by `masterFormId`.
 
 ## Google APIs
 
