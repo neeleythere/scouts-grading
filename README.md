@@ -49,7 +49,7 @@ Designed to be quick and easy to use. With all additions, edits and removal of m
 
 #### Creating Patrols
 A patrol is defined by a `Title and description` item:
-- The Patrol name is set per the headers' title.
+- The patrol name is set per the headers' title.
 - The description can be left blank.
 - Create more patrols by adding additional `Title and description` items:
   - Ensure each `Title and description` is followed by a `Multiple choice grid`.
