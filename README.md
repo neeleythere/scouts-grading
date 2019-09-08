@@ -45,7 +45,7 @@ Following weeks of usage the linked spreadsheet will populate as follows.
 
 ## Usage
 
-Designed to be quick and easy to use. With all additions, edits and removal of members/patrols done via an interface.
+Designed to be quick and easy to use. With all additions, edits and removal of members/patrols done via a graphical interface.
 
 #### Creating Patrols
 A patrol is defined by a `Title and description` item:
