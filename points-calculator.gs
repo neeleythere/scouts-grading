@@ -1,3 +1,12 @@
+/**
+ * A trigger-driven function that handles responses from the individual patrol grading forms.
+ *
+ * Note: These forms are created and the submission trigger generated upon the submission of
+ * the master form, therefore no manual creation of the form submit trigger is required.
+ *
+ * @param {Object} e The event parameter for a form submission;
+ *                   see https://developers.google.com/apps-script/understanding_events
+ */
 function onGradingFormSubmit(e) {
   
   var scriptProperties = PropertiesService.getScriptProperties();
@@ -47,6 +56,7 @@ function onGradingFormSubmit(e) {
     }
   }
   
+  // Find the row in the patrol point sheet where the patrol register begins.  
   for (var i = 0; i < pointsNameRegister.length; i++) {
     if (pointsNameRegister[i][0].toLowerCase() == patrolName) {
       patrolRow = i;
