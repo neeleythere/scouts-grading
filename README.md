@@ -92,7 +92,7 @@ The subsequent `Multiple choice grid` is interpreted as the patrol itself:
 
 ## Installation
 
-1. Make a copy of each the files within the [scouts-grading G Drive directory](https://drive.google.com/open?id=1MN9GEt42tenHOS_lwxHhdEU6lPMXRF7d).
+1. Make a copy of each of the files within the [scouts-grading G Drive directory](https://drive.google.com/open?id=1MN9GEt42tenHOS_lwxHhdEU6lPMXRF7d).
     - G Drive is able to "Make a copy" of all files in one operation if all 3 files are selected.
 2. Place the new files in a folder of their own to avoid clutter. (optional)
     - When run, `form-manager.gs` will generate additional forms which are placed in the same folder as the form defined by `masterFormId`. (see below)
